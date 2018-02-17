@@ -7,7 +7,6 @@ public class SceneLoader : MonoBehaviour
 {
     public void loadScene(string sceneName)
     {
-        PanelFade pf = GameObject.Find("PanelFadeObject").GetComponent<PanelFade>();
-        pf.loadLevel(sceneName);
+        SceneManager.LoadScene(sceneName);
     }
 }
