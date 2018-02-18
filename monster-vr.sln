@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "monster-vr", "monster-vr.csproj", "{1F589B9F-90D3-FA16-491E-F2C9E87F199E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "monster-vr.Editor", "monster-vr.Editor.csproj", "{BA1DCEAA-D55F-6CD9-6F85-3A3D9C95964C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1F589B9F-90D3-FA16-491E-F2C9E87F199E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F589B9F-90D3-FA16-491E-F2C9E87F199E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F589B9F-90D3-FA16-491E-F2C9E87F199E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F589B9F-90D3-FA16-491E-F2C9E87F199E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA1DCEAA-D55F-6CD9-6F85-3A3D9C95964C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA1DCEAA-D55F-6CD9-6F85-3A3D9C95964C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA1DCEAA-D55F-6CD9-6F85-3A3D9C95964C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA1DCEAA-D55F-6CD9-6F85-3A3D9C95964C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
