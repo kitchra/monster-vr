@@ -13,13 +13,12 @@ Painstakingly
 :)
 
 ## Accomplishments that we're proud of
-Kenny - Eagle Scout
-Rachel - Spanish Minor
+Kenny - Eagle Scout,
+Rachel - Spanish Minor,
 Tyler - 
 
 ## What we learned
 How to crawl in my skin
-also that even the transgender south park anonymous poster on the internet could actually be your savior on bug fixes
 
 ## What's next for VRelax
 That's about it
