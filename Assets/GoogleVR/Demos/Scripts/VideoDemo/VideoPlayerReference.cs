@@ -12,19 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace GoogleVR.VideoDemo {
-  using UnityEngine;
+using UnityEngine;
+using GVRSample;
 
-  public class VideoPlayerReference : MonoBehaviour {
+public class VideoPlayerReference : MonoBehaviour {
 
-    public GvrVideoPlayerTexture player;
+  public GvrVideoPlayerTexture player;
 
-    void Awake() {
-  #if !UNITY_5_2
-      GetComponentInChildren<VideoControlsManager>(true).Player = player;
-  #else
-      GetComponentInChildren<VideoControlsManager>().Player = player;
-  #endif
-    }
+  void Awake() {
+#if !UNITY_5_2
+    GetComponentInChildren<VideoControlsManager>(true).Player = player;
+#else
+    GetComponentInChildren<VideoControlsManager>().Player = player;
+#endif
   }
 }

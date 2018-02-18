@@ -1,4 +1,4 @@
-﻿// Copyright 2017 Google Inc. All rights reserved.
+﻿// Copyright 2016 Google Inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0(the "License");
 // you may not use this file except in compliance with the License.
@@ -9,7 +9,7 @@
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
+// See the License for the specific language governing permissioßns and
 // limitations under the License.
 #if UNITY_ANDROID || UNITY_EDITOR
 using UnityEngine;
@@ -22,6 +22,10 @@ public class GvrPermissionsRequester {
   // Permissions are requested via an Android Activity Fragment java object.
   private AndroidJavaObject permissionsFragment = null;
 
+  // Constants used via JNI to access the Unity player java activity.
+  private const string PACKAGE_UNITY_PLAYER = "com.unity3d.player.UnityPlayer";
+  private const string METHOD_CURRENT_ACTIVITY = "currentActivity";
+
   // Constants used via JNI to access the permissions fragment.
   private const string FRAGMENT_CLASSNAME =
     "com.google.gvr.permissionsupport.PermissionsFragment";
@@ -31,10 +35,24 @@ public class GvrPermissionsRequester {
   // Singleton instance.
   private static GvrPermissionsRequester theInstance;
 
+  /// <summary>
+  /// Gets the Unity player activity.
+  /// </summary>
+  /// <returns>The activity.</returns>
+  public static AndroidJavaObject GetActivity() {
+    Debug.Log("PermissionsRequester:GetActivity()");
+    using (var jc = new AndroidJavaClass("com.unity3d.player.UnityPlayer")) {
+      return jc.GetStatic<AndroidJavaObject>("currentActivity");
+    }
+  }
+
   /// The singleton instance of the PermissionsRequester class,
   /// lazily instanciated.
-  public static GvrPermissionsRequester Instance {
-    get {
+  public static GvrPermissionsRequester Instance
+  {
+    get
+    {
+
       if (theInstance == null) {
         theInstance = new GvrPermissionsRequester();
         if (!theInstance.InitializeFragment()) {
@@ -51,21 +69,21 @@ public class GvrPermissionsRequester {
   /// </summary>
   /// <returns>True if fragment was initialized.</returns>
   protected bool InitializeFragment() {
-#if !UNITY_ANDROID || UNITY_EDITOR
+#if UNITY_EDITOR
     Debug.LogWarning("GvrPermissionsRequester requires the Android runtime environment");
     return false;
-#else
+#elif UNITY_ANDROID
     AndroidJavaClass ajc = new AndroidJavaClass(FRAGMENT_CLASSNAME);
 
     if (ajc != null) {
       // Get the PermissionsRequesterFragment object
       permissionsFragment = ajc.CallStatic<AndroidJavaObject>("getInstance",
-                                                              GvrActivityHelper.GetActivity());
+                                                              GetActivity());
     }
 
     return permissionsFragment != null &&
         permissionsFragment.GetRawObject() != IntPtr.Zero;
-#endif  // !UNITY_ANDROID || UNITY_EDITOR
+#endif
   }
 
   public bool IsPermissionGranted(string permission) {

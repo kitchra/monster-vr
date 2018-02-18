@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace GoogleVR.VideoDemo {
-  using System;
-  using UnityEngine;
-  using UnityEngine.Events;
+using System;
+using UnityEngine;
+using UnityEngine.Events;
 
+namespace GVR.Input {
   [Serializable]
   public class Vector3Event : UnityEvent<Vector3> { }
 

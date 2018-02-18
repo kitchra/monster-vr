@@ -15,23 +15,13 @@
 using UnityEngine;
 
 /// <summary>
-/// Provides and logs versioning information for the GVR SDK for Unity.
+/// Provides and logs versioning information for the GVR Unity SDK.
 /// </summary>
 public class GvrUnitySdkVersion {
-  public const string GVR_SDK_VERSION = "1.110.0";
-
-// Google VR SDK supports Unity 5.6 or newer.
-#if !UNITY_5_6_OR_NEWER
-  #error Google VR SDK requires Unity version 5.6 or newer.
-#endif  // !UNITY_5_6_OR_NEWER
-
-// Only log GVR SDK version when running on an Android or iOS device.
-#if (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
-  private const string VERSION_HEADER = "GVR SDK for Unity version: ";
+  private const string VERSION_HEADER = "GVR Unity SDK Version: ";
 
   [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
   static void LogGvrUnitySdkVersion() {
-    Debug.Log(VERSION_HEADER + GVR_SDK_VERSION);
+    Debug.Log(VERSION_HEADER + GvrViewer.GVR_SDK_VERSION);
   }
-#endif  // (UNITY_ANDROID || UNITY_IOS) && !UNITY_EDITOR
 }

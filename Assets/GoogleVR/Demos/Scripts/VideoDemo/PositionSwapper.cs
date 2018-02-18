@@ -12,9 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-namespace GoogleVR.VideoDemo {
-  using UnityEngine;
+using UnityEngine;
 
+namespace GVR.Events {
   /// <summary>
   /// Sets the position of the transform to a position specifed in a list.
   /// </summary>

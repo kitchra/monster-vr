@@ -18,12 +18,7 @@ using UnityEngine;
 /// construction and value access either by Matrix4x4 or Quaternion + Vector3 types.
 public class Pose3D {
   /// Right-handed to left-handed matrix converter (and vice versa).
-  public static readonly Matrix4x4 FLIP_Z = Matrix4x4.Scale(new Vector3(1, 1, -1));
-
-  /// Flip the handedness of a matrix.
-  static public Matrix4x4 FlipHandedness(Matrix4x4 matrix) {
-    return FLIP_Z * matrix * FLIP_Z;
-  }
+  protected static readonly Matrix4x4 flipZ = Matrix4x4.Scale(new Vector3(1, 1, -1));
 
   /// The translation component of the pose.
   public Vector3 Position { get; protected set; }
@@ -37,7 +32,7 @@ public class Pose3D {
   /// The pose as a matrix in right-handed coordinates.
   public Matrix4x4 RightHandedMatrix {
     get {
-      return FlipHandedness(Matrix);
+      return flipZ * Matrix * flipZ;
     }
   }
 
@@ -88,7 +83,7 @@ public class MutablePose3D : Pose3D {
 
   /// Sets the position and orientation from a right-handed Matrix4x4.
   public void SetRightHanded(Matrix4x4 matrix) {
-    Set(FlipHandedness(matrix));
+    Set(flipZ * matrix * flipZ);
   }
 }
 /// @endcond
